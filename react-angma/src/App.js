@@ -8,7 +8,6 @@ function App() {
   return (
     <div className="App">
       <Hello/>
-      <div className = {Styles.box}>앱</div>
     </div>
   );
 }

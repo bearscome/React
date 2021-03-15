@@ -1,28 +1,30 @@
-/*const Hello = function() {
-    <p>HEllow</p>
-}
-
-const Hello = () => {
-    <p>HEllow</p>
-}
-
-export default Hello;
-*/
-
 import World from "./World";
 import Styles from "./Hello.module.css"
 
 export default function Hello () {
-    return(
-        <>{/* 스타일 주는 방법_1*/}
-            <h1 style={{
-                color : 'red',
-                borderRight : '1px solid #000',
-                marginBottom : '50px',
-                opacity : 0.5
+    function ShowName () {
 
-            }}>Hello</h1>
-            <div className = {Styles.box}>헬로</div> {/*Styles를 선언하고 클래스를 객체로 가져옴 */}
+    }
+
+    function ShowAge (age) {
+        console.log(age)
+    }
+
+    function ShowText(text) {
+        console.log(text)
+    }
+
+    return(
+        <>
+           <h1>Hello</h1> 
+           <button >Show name</button>
+           <button onClick={ShowAge(10)}>Show age</button>
+           <input type='text' onChange = { (e) =>{
+                const text = e.target.value;
+                ShowText(text)
+           }}/>
         </>
     )
 }
+
+//상황에 맞게 가독성이 좋은 함수 작성
