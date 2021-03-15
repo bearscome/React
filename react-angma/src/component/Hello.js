@@ -1,30 +1,17 @@
-import World from "./World";
-import Styles from "./Hello.module.css"
+import {useState} from "react"
 
 export default function Hello () {
-    function ShowName () {
+    const [name, setName] = useState('Mike')
+          //변수명, name변경 값,  // 초기값
 
+    function changeName() {
+        setName(name === 'Mike' ? "Jane" : "Mike")
     }
-
-    function ShowAge (age) {
-        console.log(age)
-    }
-
-    function ShowText(text) {
-        console.log(text)
-    }
-
     return(
         <>
-           <h1>Hello</h1> 
-           <button >Show name</button>
-           <button onClick={ShowAge(10)}>Show age</button>
-           <input type='text' onChange = { (e) =>{
-                const text = e.target.value;
-                ShowText(text)
-           }}/>
+           <h1>state</h1> 
+           <h2>{name}</h2>
+           <button onClick={changeName}>chageName</button>
         </>
     )
 }
-
-//상황에 맞게 가독성이 좋은 함수 작성
