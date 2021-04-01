@@ -1,54 +1,47 @@
 import React from 'react';
-
+import axios from 'axios'
+import Movie from './Movie'
+import './App.css'
 class App extends React.Component {
-  //마운트 함수들(생명주기) constructor, render, componenetDidUpdate, componentDidMount
-  // 언마운트 componentWillUnmount
-  constructor(props) { // 제일 먼저 실행되는 함수
-    super(props)
-    console.log('hello')
-  }
-
 
   state = {
-    count : 0
+    isLoading : true,
+    movies : [],
   }
 
-  add = () => {(
-    this.setState(current => ({
-      count : current.count + 1
-    }))
-  )}
+  getMoves = async () => {
+   const {
+     data : {
+       data : {movies}
+     }
+   } = await axios.get('https://yts.mx/api/v2/list_movies.json?sort_by=rating')
 
-  minus = () => {
-    this.setState(current => ({
-      count : current.count - 1
-    }))
+   this.setState({movies, isLoading:false})
   }
 
+  render() {
+    const {isLoading, movies} = this.state; 
 
-  componentDidUpdate() { // 셋스테이트가 실행된 후 랜더가 다시 그려지면 업데이트 되는 함수
-    console.log('I just updated')
-    //setState -> render -> componentIpdate
-  }
+    return (
+      <section className="container">
 
-  componentDidMount() { //랜더 끝나고 실행
-    console.log('component rendered')
-    // constructor ->  render -> componentDidMount
-  }
-
-  componentWillUnmount() { //컴포넌트가 화면을 떠날 때 실행되는 함수
-
-  }
-
-  render() { // 콘스트럭쳐 실행되고 랜더 실행
-    console.log('render')
-    return(
-      <div>
-        <h1>안녕 : {this.state.count}</h1>
-        <button onClick = {this.add}>add</button>
-        <button onClick = {this.minus}>minus</button>
-      </div>
+        {isLoading ? 
+          <div className="loading">
+            <span className="loader__text">Loading...</span>
+          </div>
+          : <div className="movies">
+            {
+               movies.map(movies => {
+                return <Movie key = {movies.id}  year = {movies.year} title = {movies.title} summary = {movies.summary} poster = {movies.large_cover_image}/>
+            })}
+          </div>
+        }
+      </section>
     )
+  }
+
+  componentDidMount() {
+    this.getMoves()
   }
 }
 export default App;
