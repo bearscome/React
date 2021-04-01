@@ -19,12 +19,12 @@ class App extends React.Component {
     }))
   )}
 
-
-  minue = () => {(
+  minus = () => {
     this.setState(current => ({
-      count : current.count -1
+      count : current.count - 1
     }))
-  )}
+  }
+
 
   componentDidUpdate() { // 셋스테이트가 실행된 후 랜더가 다시 그려지면 업데이트 되는 함수
     console.log('I just updated')
@@ -46,7 +46,7 @@ class App extends React.Component {
       <div>
         <h1>안녕 : {this.state.count}</h1>
         <button onClick = {this.add}>add</button>
-        <button onClick = {this.minue}>minus</button>
+        <button onClick = {this.minus}>minus</button>
       </div>
     )
   }
