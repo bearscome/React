@@ -32,7 +32,7 @@ class App extends React.Component {
           : <div className="movies">
             {
                movies.map(movies => {
-                return <Movie key = {movies.id}  year = {movies.year} title = {movies.title} summary = {movies.summary} poster = {movies.large_cover_image}/>
+                return <Movie key = {movies.id}  year = {movies.year} title = {movies.title} summary = {movies.summary} poster = {movies.large_cover_image} genres = {movies.genres}/>
             })}
           </div>
         }
