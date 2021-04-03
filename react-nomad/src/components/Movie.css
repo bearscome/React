@@ -27,7 +27,7 @@
 }
 
 .movies .movie__title,
-.movies .movie__year {
+    .movies .movie__year {
     margin: 0;
     font-weight: 300;
 }
