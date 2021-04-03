@@ -14,7 +14,7 @@ function Movie({title, year, summary, poster, genres}) {
                         return <li className="movie__genres" key ={Idx}>{genres}</li>
                     })}
                 </ul>
-                <p className = "movie__summary" >{summary}</p>
+                <p className = "movie__summary" >{checkStr(summary)}</p>
             </div>
         </div>
     )
@@ -26,6 +26,16 @@ Movie.propTypes = {
     poster : PropTypes.string.isRequired,
 };
 
+
+function checkStr(str) {
+    console.log('str체크',str.length)
+    if(str.length > 180) {
+        const strSlice = str.slice(0,180)
+        return strSlice + '...'
+    } else {
+        return str
+    }
+} 
 export default Movie
 
 /**
