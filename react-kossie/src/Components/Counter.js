@@ -1,14 +1,19 @@
 import React,{useState} from 'react'
 
-function Counter () {
+function Counter (props) {
     const [count, setCount] = useState(0)
+
   
     const increment = () => {
-      setCount(count + 1)
+      setCount(count + 2)
     }
-  
+
+    const clickString = props.click || 'click'
+
     return (
-        <button onClick = {increment} >더하기 {count}</button>
+        <button onClick = {increment}>
+            {clickString} {count}
+        </button>
     );
 }
 
