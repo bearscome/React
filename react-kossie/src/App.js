@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import './App.css';
+import Movie from './Components/Movie';
 
 function App() {
   const movies = [
@@ -10,12 +10,10 @@ function App() {
 
   const renderMovies = movies.map(movie => {
     return (
-      <div className = "movie" key = {movie.id}>
-        <div className = "movie-title" >{movie.title}</div>
-        <div className = "movie-year" >{movie.year}</div>
-      </div>
+      <Movie movie = {movie} key = {movie.id}/>
     )
   });
+
   return (
     <div className="App">
       <h1>Movie List</h1>
