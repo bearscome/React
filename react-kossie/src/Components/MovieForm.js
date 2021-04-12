@@ -12,6 +12,7 @@ const MovieForm = ({ addMovie }) => {
     const onSubmit = (e) => {
         e.preventDefault();
         addMovie({
+            id: Date.now(),
             title: movieTitle,
             year :movieYear,
         });
